@@ -129,4 +129,4 @@ dmypy.json
 .pyre/
 
 
-MLserver/settings.py
+MLserver/MLserver/settings.py
