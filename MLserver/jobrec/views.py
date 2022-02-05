@@ -6,7 +6,7 @@ from deep.test import jobRec
 
 def index(request):
     if request.method == 'GET':
-        return render(request, 'test.html')
+        return render(request, 'jobrec/test.html')
 
     elif request.method == 'POST':
 
@@ -23,5 +23,6 @@ def index(request):
 
         print(jobRec(answer_li))
 
+
         # 전송받은 이메일 비밀번호 확인
-        return render(request, 'test.html')
+        return render(request, 'jobrec/test.html')
