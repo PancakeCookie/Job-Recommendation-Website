@@ -16,7 +16,7 @@ def signup(request):
     middle_cate = MiddleCate.objects.all()
     context={'middle_cate':middle_cate}
 
-    return render(request, 'register.html', context)
+    return render(request, 'user/register.html', context)
 
 # 회원가입 정보 전송
 def signup2(request):
@@ -41,7 +41,7 @@ def signup2(request):
 
         if user_info:
             res_data['error'] = '사용 불가능한 이메일'
-            return render(request, 'register.html', res_data)
+            return render(request, 'user/register.html', res_data)
     except :
 
         # 입력 값 중 빈값 체크
@@ -73,14 +73,14 @@ def signup2(request):
             return redirect('/index')
 
         # 위의 유효성 검증에서 걸렸을 경우 에러메세지와 함께 랜더링
-        return render(request, 'register.html', res_data)
+        return render(request, 'user/register.html', res_data)
 
 # 로그인
 def signin(request):
 
     # 로그인 화면 호출
     if request.method == 'GET':
-        return render(request,'login.html')
+        return render(request, 'user/login.html')
 
     # 로그인 입력값 전송
     elif request.method == 'POST':
@@ -102,7 +102,7 @@ def signin(request):
             print(user_info)
             if user_info.withdrawal == 1 :
                 res_data['error'] = '회원이 아닙니다.'
-                return render(request, 'login.html', res_data)
+                return render(request, 'user/login.html', res_data)
 
             # db에 저장된 id와 pw 가 일치하는지 확인
             if (useremail == user_info.useremail) and (userpw == user_info.userpw) :
@@ -113,7 +113,7 @@ def signin(request):
             # 유효성 검증 실패 - 에러메세지 전달
             else :
                 res_data['error'] = '올바른 이메일과 비밀번호를 입력해주세요.'
-        return render(request, 'login.html',res_data)
+        return render(request, 'user/login.html', res_data)
 
 
 # 로그아웃
@@ -145,7 +145,7 @@ def userinfo(request,id):
     context={'userinfo':user_info,
              'gender':gender,
              'work_state':work_state}
-    return render(request, 'userinfo.html',context)
+    return render(request, 'user/userinfo.html', context)
 
 # 수정 화면 호출
 def userupdate(request, id):
@@ -161,7 +161,7 @@ def userupdate(request, id):
     context = {'userinfo': user_info,
                'age':str(user_info.age),
                'middle_cate':middle_cate}
-    return render(request, 'infoupdate.html', context)
+    return render(request, 'user/infoupdate.html', context)
 
 # 정보 수정 전송
 def userupdate2(request):
@@ -216,11 +216,11 @@ def userupdate2(request):
         # 수정된 것 저장.
         member.save()
         return redirect('/index')
-    return render(request, 'infoupdate.html', res_data)
+    return render(request, 'user/infoupdate.html', res_data)
 
 # 회원 탈퇴 창 호출
 def userdelete(request,id):
-    return render(request, 'withdrawal.html')
+    return render(request, 'user/withdrawal.html')
 
 # 회원탈퇴 정보 전송
 def userdelete2(request) :
@@ -247,7 +247,7 @@ def userdelete2(request) :
     # 비밀번호 불일치 회원탈퇴 불가능
     else:
         res_data = {'error': '비밀번호가 일치하지 않습니다.'}
-        return render(request, 'withdrawal.html', res_data)
+        return render(request, 'user/withdrawal.html', res_data)
 
 
 

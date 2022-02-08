@@ -21,90 +21,1096 @@
     <script src="{% static 'assets/vendor/jquery/dist/jquery.min.js'%}"></script>
 
 <style>
+    .q_list{
+        margin-bottom: 10rem;
+    }
+    .scale{
+        margin: 0.5rem;
+        text-align: center;
+        align-items: center;
+        line-height: 2rem;
+        display: flex;
+        justify-content: center;
+        margin:0 4rem 0 4rem;
+    }
+    .scale_2{
+        display:flex;
 
-    input[type='radio']{
-        width:50px;
-        height: 50px;
+    }
+    .between1and2{
+        padding:0 0 0 17rem;
+    }
+    .between4and5{
+        padding:0 0 0 10rem;
+    }
+    .input_wrap{
+        display: flex;
+        justify-content: center;
+        margin : 0.15rem;
+
+    }
+
+    input[type='radio'],
+    input[type='radio']:after {
+        {#appearance: none;#}
+        width:3.15rem;
+        height: 3.15rem;
+        margin:0 0 0 3.5rem;
+        padding:0.6rem;
+        border-radius: 100%;
+    }
+    input[type='radio'] {
+        background-color: white;
+        border: 1px solid grey;
+}
+
+    input[type='radio']:checked:after {
+        color: grey;
     }
 </style>
 
 </head>
 <body>
+<nav class="sidenav navbar navbar-vertical  fixed-left  navbar-expand-xs navbar-light bg-white" id="sidenav-main">
+    <div class="scrollbar-inner">
+        <!-- Brand -->
+        <div class="sidenav-header  align-items-center">
+            <a class="navbar-brand" href="/index">
+                <img src="{% static 'assets/img/brand/blue.png'%}" class="navbar-brand-img" alt="...">
+            </a>
+        </div>
+        <div class="navbar-inner">
+            <!-- Collapse -->
+            <div class="collapse navbar-collapse" id="sidenav-collapse-main">
+                <!-- Nav items -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/jobrec/submit">
 
-<div class="q_box q_box_1 on">
-<div class="q_listbox">
-<div class="q_list q_list1">
-<div class="checking_wrap">
-<strong><span>1. 특별히 이루고자 하는 꿈은 없다. 소박하고 무난한 삶이면 좋겠다.</span></strong>
-<div class="check_box">
-<span class="agree_txt">동의</span>
-<div class="input_wrap">
-<div class="input_box">
-<input type="radio" id="radio_1_1" name="radio_1" value="1">
-<label for="radio_1_1"></label>
-</div>
-<div class="input_box">
-<input type="radio" id="radio_1_2" name="radio_1" value="1">
-<label for="radio_1_2"></label>
-</div>
-<div class="input_box">
-<input type="radio" id="radio_1_3" name="radio_1" value="1">
-<label for="radio_1_3"></label>
-</div>
-<div class="input_box">
-<input type="radio" id="radio_1_4" name="radio_1" value="0">
-<label for="radio_1_4"></label>
-</div>
-<div class="input_box">
-<input type="radio" id="radio_1_5" name="radio_1" value="-1">
-<label for="radio_1_5"></label>
-</div>
-<div class="input_box">
-<input type="radio" id="radio_1_6" name="radio_1" value="-1">
-<label for="radio_1_6"></label>
-</div>
-<div class="input_box">
-<input type="radio" id="radio_1_7" name="radio_1" value="-1">
-<label for="radio_1_7"></label>
-</div>
-</div>
-<span class="disagree_txt">비동의</span>
-</div>
-</div>
-</div>
-</div>
-</div>
+                            <i class="ni ni-send text-dark"></i>
+                            <span class="nav-link-text">직업 탐색</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="icons.html">
+                            <i class="ni ni-planet text-orange"></i>
+                            <span class="nav-link-text">직업 정보</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/talk/">
+{#                            <i class="ni ni-pin-3 text-primary"></i>#}
+                            <i class="ni ni-tv-2 text-primary"></i>
+
+                            <span class="nav-link-text">직업 톡</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile.html">
+                            <i class="ni ni-bullet-list-67 text-default"></i>
+{#                            <i class="ni ni-single-02 text-yellow"></i>#}
+                            <span class="nav-link-text">채용 공고</span>
+                        </a>
+                    </li>
+                     </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<div class="main-content" id="panel">
+    <!-- Topnav -->
+    <nav class="navbar navbar-top navbar-expand navbar-dark bg-primary border-bottom">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Search form -->
+                <form class="navbar-search navbar-search-light form-inline mr-sm-3" id="navbar-search-main">
+                    <div class="form-group mb-0">
+                        <div class="input-group input-group-alternative input-group-merge">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                            </div>
+                            <input class="form-control" placeholder="Search" type="text">
+                        </div>
+                    </div>
+                    <button type="button" class="close" data-action="search-close" data-target="#navbar-search-main" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </form>
+                <!-- Navbar links -->
+                <ul class="navbar-nav align-items-center  ml-md-auto ">
+                    <li class="nav-item d-xl-none">
+                        <!-- Sidenav toggler -->
+                        <div class="pr-3 sidenav-toggler sidenav-toggler-dark" data-action="sidenav-pin" data-target="#sidenav-main">
+                            <div class="sidenav-toggler-inner">
+                                <i class="sidenav-toggler-line"></i>
+                                <i class="sidenav-toggler-line"></i>
+                                <i class="sidenav-toggler-line"></i>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item d-sm-none">
+                        <a class="nav-link" href="#" data-action="search-show" data-target="#navbar-search-main">
+                            <i class="ni ni-zoom-split-in"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="ni ni-bell-55"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-xl  dropdown-menu-right  py-0 overflow-hidden">
+                            <!-- Dropdown header -->
+                            <div class="px-3 py-3">
+                                <h6 class="text-sm text-muted m-0">You have <strong class="text-primary">13</strong> notifications.</h6>
+                            </div>
+                            <!-- List group -->
+                            <div class="list-group list-group-flush">
+                                <a href="#!" class="list-group-item list-group-item-action">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <!-- Avatar -->
+                                            <img alt="Image placeholder" src="{% static 'assets/img/theme/team-1.jpg'%}" class="avatar rounded-circle">
+                                        </div>
+                                        <div class="col ml--2">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h4 class="mb-0 text-sm">John Snow</h4>
+                                                </div>
+                                                <div class="text-right text-muted">
+                                                    <small>2 hrs ago</small>
+                                                </div>
+                                            </div>
+                                            <p class="text-sm mb-0">Let's meet at Starbucks at 11:30. Wdyt?</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#!" class="list-group-item list-group-item-action">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <!-- Avatar -->
+                                            <img alt="Image placeholder" src="{% static 'assets/img/theme/team-2.jpg' %}" class="avatar rounded-circle">
+                                        </div>
+                                        <div class="col ml--2">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h4 class="mb-0 text-sm">John Snow</h4>
+                                                </div>
+                                                <div class="text-right text-muted">
+                                                    <small>3 hrs ago</small>
+                                                </div>
+                                            </div>
+                                            <p class="text-sm mb-0">A new issue has been reported for Argon.</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#!" class="list-group-item list-group-item-action">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
 
 
+                                            <!-- Avatar -->
+                                            <img alt="Image placeholder" src="{% static 'assets/img/theme/team-3.jpg'%}" class="avatar rounded-circle">
+                                        </div>
+                                        <div class="col ml--2">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h4 class="mb-0 text-sm">John Snow</h4>
+                                                </div>
+                                                <div class="text-right text-muted">
+                                                    <small>5 hrs ago</small>
+                                                </div>
+                                            </div>
+                                            <p class="text-sm mb-0">Your posts have been liked a lot.</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#!" class="list-group-item list-group-item-action">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <!-- Avatar -->
+                                            <img alt="Image placeholder" src="{% static 'assets/img/theme/team-4.jpg'%}" class="avatar rounded-circle">
+                                        </div>
+                                        <div class="col ml--2">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h4 class="mb-0 text-sm">John Snow</h4>
+                                                </div>
+                                                <div class="text-right text-muted">
+                                                    <small>2 hrs ago</small>
+                                                </div>
+                                            </div>
+                                            <p class="text-sm mb-0">Let's meet at Starbucks at 11:30. Wdyt?</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="#!" class="list-group-item list-group-item-action">
+                                    <div class="row align-items-center">
+                                        <div class="col-auto">
+                                            <!-- Avatar -->
+                                            <img alt="Image placeholder" src="{% static 'assets/img/theme/team-5.jpg'%}" class="avatar rounded-circle">
+                                        </div>
+                                        <div class="col ml--2">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div>
+                                                    <h4 class="mb-0 text-sm">John Snow</h4>
+                                                </div>
+                                                <div class="text-right text-muted">
+                                                    <small>3 hrs ago</small>
+                                                </div>
+                                            </div>
+                                            <p class="text-sm mb-0">A new issue has been reported for Argon.</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <!-- View all -->
+                            <a href="#!" class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a>
+                        </div>
+                    </li>
+                    {#            <li class="nav-item dropdown">#}
+                    {#              <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+                    {#                <i class="ni ni-ungroup"></i>#}
+                    {#              </a>#}
+                    {#                #}
+                    {#                #}
+                    {#              <div class="dropdown-menu dropdown-menu-lg dropdown-menu-dark bg-default  dropdown-menu-right ">#}
+                    {#                <div class="row shortcuts px-4">#}
+                    {#                  <a href="#!" class="col-4 shortcut-item">#}
+                    {#                    <span class="shortcut-media avatar rounded-circle bg-gradient-red">#}
+                    {#                      <i class="ni ni-calendar-grid-58"></i>#}
+                    {#                    </span>#}
+                    {#                    <small>Calendar</small>#}
+                    {#                  </a>#}
+                    {#                  <a href="#!" class="col-4 shortcut-item">#}
+                    {#                    <span class="shortcut-media avatar rounded-circle bg-gradient-orange">#}
+                    {#                      <i class="ni ni-email-83"></i>#}
+                    {#                    </span>#}
+                    {#                    <small>Email</small>#}
+                    {#                  </a>#}
+                    {#                  <a href="#!" class="col-4 shortcut-item">#}
+                    {#                    <span class="shortcut-media avatar rounded-circle bg-gradient-info">#}
+                    {#                      <i class="ni ni-credit-card"></i>#}
+                    {#                    </span>#}
+                    {#                    <small>Payments</small>#}
+                    {#                  </a>#}
+                    {#                  <a href="#!" class="col-4 shortcut-item">#}
+                    {#                    <span class="shortcut-media avatar rounded-circle bg-gradient-green">#}
+                    {#                      <i class="ni ni-books"></i>#}
+                    {#                    </span>#}
+                    {#                    <small>Reports</small>#}
+                    {#                  </a>#}
+                    {#                  <a href="#!" class="col-4 shortcut-item">#}
+                    {#                    <span class="shortcut-media avatar rounded-circle bg-gradient-purple">#}
+                    {#                      <i class="ni ni-pin-3"></i>#}
+                    {#                    </span>#}
+                    {#                    <small>Maps</small>#}
+                    {#                  </a>#}
+                    {#                  <a href="#!" class="col-4 shortcut-item">#}
+                    {#                    <span class="shortcut-media avatar rounded-circle bg-gradient-yellow">#}
+                    {#                      <i class="ni ni-basket"></i>#}
+                    {#                    </span>#}
+                    {#                    <small>Shop</small>#}
+                    {#                  </a>#}
+                    {#                </div>#}
+                    {#              </div>#}
+                    {#            </li>#}
+                </ul>
+
+                <ul class="navbar-nav align-items-center  ml-auto ml-md-0 ">
+                    {% if request.session.useremail %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link pr-0" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <div class="media align-items-center">
+                  <span class="avatar avatar-sm rounded-circle">
+                    <img alt="Image placeholder" src="{% static 'assets/img/theme/team-4.jpg'%}">
+                  </span>
+                                    <div class="media-body  ml-2  d-none d-lg-block">
+                                        <span class="mb-0 text-sm  font-weight-bold">{{ userinfo.nickname }}</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu  dropdown-menu-right ">
+                                <div class="dropdown-header noti-title">
+                                    <h6 class="text-overflow m-0">Welcome!</h6>
+                                </div>
+                                <a href="/users/info/{{ userinfo.id }}" class="dropdown-item">
+                                    <i class="ni ni-single-02"></i>
+                                    <span>My profile</span>
+                                </a>
+                                {#                <a href="#!" class="dropdown-item">#}
+                                {#                  <i class="ni ni-settings-gear-65"></i>#}
+                                {#                  <span>Settings</span>#}
+                                {#                </a>#}
+                                {#                <a href="#!" class="dropdown-item">#}
+                                {#                  <i class="ni ni-calendar-grid-58"></i>#}
+                                {#                  <span>Activity</span>#}
+                                {#                </a>#}
+                                {#                <a href="#!" class="dropdown-item">#}
+                                {#                  <i class="ni ni-support-16"></i>#}
+                                {#                  <span>Support</span>#}
+                                {#                </a>#}
+                                <div class="dropdown-divider"></div>
+                                <a href="/users/logout" class="dropdown-item">
+                                    <i class="ni ni-user-run"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </div>
+                        </li>
+                    {% else %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link pr-0" href="/users/signin" role="button" >
+                                <div class="media align-items-center">
+                                    <span>로그인{{ request.session.useremail }}</span></div>
+                            </a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link pr-0" href="/users/signup" role="button" >
+                                <div class="media align-items-center">
+                                    <span>회원가입</span></div>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+<h1 class="mt-5 text-center"> 직업 추천 TEST</h1>
 
 <form role="form" action="/jobrec/submit" method="post">
     {% csrf_token %}
-<div class="input-group">
-      <span class="text">가깝다</span>
-<div class="custom-control custom-radio custom-control-inline input_box">
-  <input type="radio" id="customRadioInline1" name="a1" value="1" class="custom-control-input">
-  <label class="custom-control-label" for="customRadioInline1"></label>
+
+<div class="q_box q_box_1 on">
+<div class="q_listbox">
+
+    {#    aq4_2 #}
+    <div class="q_list ">
+<div class="checking_wrap">
+
+    <strong><h2 class="mt-5 text-center">1. 당신의 【장비, 건축물, 자재 검사】활동의 수준은 어느 정도라고 생각하십니까?</h2></strong>
+    <strong><div class="mt-3 text-center">장비, 건축물, 자재 검사 : 오류, 문제점, 결함의 원인을 파악하기 위하여 장비, 건축물, 자재를 검사하기</div></strong>
+
+<div class="check_box">
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      7&nbsp; </span>
+{#<div class="scale">#}
+{#<span class="detail_scale_never">전혀모름</span>#}
+{#    <span class="detail_scale">1</span>#}
+{#    <span class="detail_scale">2</span>#}
+{#    <span class="detail_scale">3</span>#}
+{#    <span class="detail_scale">4</span>#}
+{#    <span class="detail_scale">5</span>#}
+{#    <span class="detail_scale">6</span>#}
+{#    <span class="detail_scale">7</span>#}
+{##}
+{#</div>#}
+<div class="input_wrap">
+    <div class="input_box">
+<input type="radio" id="radio_1_1" name="aq4_2" value="0">
+<label for="radio_1_1"></label>
 </div>
-<div class="custom-control custom-radio custom-control-inline input_box">
-  <input type="radio" id="customRadioInline2" name="a1" value="2" class="custom-control-input">
-  <label class="custom-control-label" for="customRadioInline2"></label>
+<div class="input_box">
+<input type="radio" id="radio_1_1" name="aq4_2" value="1">
+<label for="radio_1_1"></label>
 </div>
-<div class="custom-control custom-radio custom-control-inline">
-<input type="radio" id="customRadioInline3" name="a1" value="3" class="custom-control-input">
-<label class="custom-control-label" for="customRadioInline3"></label>
+<div class="input_box">
+<input type="radio" id="radio_1_2" name="aq4_2" value="2">
+<label for="radio_1_2"></label>
 </div>
-    <div class="custom-control custom-radio custom-control-inline">
-  <input type="radio" id="customRadioInline4" name="a1" value="4" class="custom-control-input">
-  <label class="custom-control-label" for="customRadioInline4"></label>
+<div class="input_box">
+<input type="radio" id="radio_1_3" name="aq4_2" value="3">
+<label for="radio_1_3"></label>
 </div>
-    <div class="custom-control custom-radio custom-control-inline">
-  <input type="radio" id="customRadioInline5" name="a1" value="5" class="custom-control-input">
-  <label class="custom-control-label" for="customRadioInline5"></label>
+<div class="input_box">
+<input type="radio" id="radio_1_4" name="aq4_2" value="4">
+<label for="radio_1_4"></label>
 </div>
-      <span class="text">멀다</span>
+<div class="input_box">
+<input type="radio" id="radio_1_5" name="aq4_2" value="5">
+<label for="radio_1_5"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_6" name="aq4_2" value="6">
+<label for="radio_1_6"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_7" name="aq4_2" value="7">
+<label for="radio_1_7"></label>
+</div>
+</div>
+    <div class="scale_2">
+        <div class="between1and2">
+        <span><br>↑<br>보고서 내 문장들의 <br>행 간격을 변경한다</span>
+        </div>
+        <div class="between4and5">
+        <span><br>↑<br>고등학생 밴드가 공연할 <br>대중음악을 편곡한다</span>
+        </div>
+        <div>
+        <span><br>↑<br>새로운 소프트 웨어를 개발한다</span>
+        </div>
+    </div>
+</div>
+</div>
 </div>
 
-<button>제출</button>
+
+
+{# aq11_2#}
+<div class="q_list q_list1">
+<div class="checking_wrap">
+
+    <strong><h2 class="mt-5 text-center">2. 당신의 【창조적 생각】활동의 수준은 어느 정도라고 생각하십니까?</h2></strong>
+    <strong><div class="mt-3 text-center">창조적 생각 : 새로운 소프트웨어, 생각, 시스템, 제품 등을 설계하고 개발하기</div></strong>
+
+<div class="check_box">
+<div class="scale">
+{#    <span>전혀모름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7</span>#}
+<span class="detail_scale_never">전혀모름</span>
+    <span class="detail_scale">1</span>
+    <span class="detail_scale">2</span>
+    <span class="detail_scale">3</span>
+    <span class="detail_scale">4</span>
+    <span class="detail_scale">5</span>
+    <span class="detail_scale">6</span>
+    <span class="detail_scale">7</span>
+
+</div>
+<div class="input_wrap">
+    <div class="input_box">
+<input type="radio" id="radio_1_1" name="aq11_2" value="0">
+<label for="radio_1_1"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_1" name="aq11_2" value="1">
+<label for="radio_1_1"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_2" name="aq11_2" value="2">
+<label for="radio_1_2"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_3" name="aq11_2" value="3">
+<label for="radio_1_3"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_4" name="aq11_2" value="4">
+<label for="radio_1_4"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_5" name="aq11_2" value="5">
+<label for="radio_1_5"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_6" name="aq11_2" value="6">
+<label for="radio_1_6"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_7" name="aq11_2" value="7">
+<label for="radio_1_7"></label>
+</div>
+</div>
+    <div class="scale_2">
+        <div class="between1and2">
+        <span><br>↑<br>보고서 내 문장들의 <br>행 간격을 변경한다</span>
+        </div>
+        <div class="between4and5">
+        <span><br>↑<br>고등학생 밴드가 공연할 <br>대중음악을 편곡한다</span>
+        </div>
+        <div>
+        <span><br>↑<br>새로운 소프트 웨어를 개발한다</span>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+
+{#   aq16_2#}
+<div class="q_list q_list2">
+<div class="checking_wrap">
+
+    <strong><h2 class="mt-5 text-center">3. 당신의 【일반적인 신체활동】활동의 수준은 어느 정도라고 생각하십니까?</h2></strong>
+    <strong><div class="mt-3 text-center">일반적인 신체활동 : 오르기, 들어올리기, 균형잡기, 걷기, 웅크리기, 자재 운반하기 등과 같이 팔,다리,몸 전체를 움직이는 신체활동</div></strong>
+
+<div class="check_box">
+<div class="scale">
+{#    <span>전혀모름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7</span>#}
+<span class="detail_scale_never">전혀모름</span>
+    <span class="detail_scale">1</span>
+    <span class="detail_scale">2</span>
+    <span class="detail_scale">3</span>
+    <span class="detail_scale">4</span>
+    <span class="detail_scale">5</span>
+    <span class="detail_scale">6</span>
+    <span class="detail_scale">7</span>
+
+</div>
+<div class="input_wrap">
+    <div class="input_box">
+<input type="radio" name="aq16_2" value="0">
+<label for="radio_1_1"></label>
+</div>
+<div class="input_box">
+<input type="radio"  name="aq16_2" value="1">
+<label for="radio_1_1"></label>
+</div>
+<div class="input_box">
+<input type="radio"  name="aq16_2" value="2">
+<label for="radio_1_2"></label>
+</div>
+<div class="input_box">
+<input type="radio"  name="aq16_2" value="3">
+<label for="radio_1_3"></label>
+</div>
+<div class="input_box">
+<input type="radio"  name="aq16_2" value="4">
+<label for="radio_1_4"></label>
+</div>
+<div class="input_box">
+<input type="radio"  name="aq16_2" value="5">
+<label for="radio_1_5"></label>
+</div>
+<div class="input_box">
+<input type="radio" name="aq16_2" value="6">
+<label for="radio_1_6"></label>
+</div>
+<div class="input_box">
+<input type="radio"  name="aq16_2" value="7">
+<label for="radio_1_7"></label>
+</div>
+</div>
+    <div class="scale_2">
+        <div class="between1and2">
+        <span><br>↑<br>보고서 내 문장들의 <br>행 간격을 변경한다</span>
+        </div>
+        <div class="between4and5">
+        <span><br>↑<br>고등학생 밴드가 공연할 <br>대중음악을 편곡한다</span>
+        </div>
+        <div>
+        <span><br>↑<br>새로운 소프트 웨어를 개발한다</span>
+        </div>
+    </div>
+
+</div>
+</div>
+</div>
+
+{#    aq18_2#}
+    <div class="q_list ">
+<div class="checking_wrap">
+
+    <strong><h2 class="mt-5 text-center">4. 당신의 【기계장치 제어】활동의 수준은 어느 정도라고 생각하십니까?</h2></strong>
+    <strong><div class="mt-3 text-center">기계장치 제어 : 기계장치를 조종하거나 몸을 직접 움직여서 기계를 사용하기</div></strong>
+
+<div class="check_box">
+<div class="scale">
+<span class="detail_scale_never">전혀모름</span>
+    <span class="detail_scale">1</span>
+    <span class="detail_scale">2</span>
+    <span class="detail_scale">3</span>
+    <span class="detail_scale">4</span>
+    <span class="detail_scale">5</span>
+    <span class="detail_scale">6</span>
+    <span class="detail_scale">7</span>
+
+</div>
+<div class="input_wrap">
+    <div class="input_box">
+<input type="radio" id="radio_1_1" name="aq18_2" value="0">
+<label for="radio_1_1"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_1" name="aq18_2" value="1">
+<label for="radio_1_1"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_2" name="aq18_2" value="2">
+<label for="radio_1_2"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_3" name="aq18_2" value="3">
+<label for="radio_1_3"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_4" name="aq18_2" value="4">
+<label for="radio_1_4"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_5" name="aq18_2" value="5">
+<label for="radio_1_5"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_6" name="aq18_2" value="6">
+<label for="radio_1_6"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_7" name="aq18_2" value="7">
+<label for="radio_1_7"></label>
+</div>
+</div>
+    <div class="scale_2">
+        <div class="between1and2">
+        <span><br>↑<br>보고서 내 문장들의 <br>행 간격을 변경한다</span>
+        </div>
+        <div class="between4and5">
+        <span><br>↑<br>고등학생 밴드가 공연할 <br>대중음악을 편곡한다</span>
+        </div>
+        <div>
+        <span><br>↑<br>새로운 소프트 웨어를 개발한다</span>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+{#    aq19_2#}
+    <div class="q_list ">
+<div class="checking_wrap">
+
+    <strong><h2 class="mt-5 text-center">5. 당신의 【컴퓨터 업무】활동의 수준은 어느 정도라고 생각하십니까?</h2></strong>
+    <strong><div class="mt-3 text-center">컴퓨터 업무 : 프로그램 제작, 소프트웨어 저작, 기능 설정, 정보 입력, 정보 처리를 하기 위한 컴퓨터 시스템 사용하기</div></strong>
+
+<div class="check_box">
+<div class="scale">
+<span class="detail_scale_never">전혀모름</span>
+    <span class="detail_scale">1</span>
+    <span class="detail_scale">2</span>
+    <span class="detail_scale">3</span>
+    <span class="detail_scale">4</span>
+    <span class="detail_scale">5</span>
+    <span class="detail_scale">6</span>
+    <span class="detail_scale">7</span>
+
+</div>
+<div class="input_wrap">
+    <div class="input_box">
+<input type="radio" id="radio_1_1" name="aq19_2" value="0">
+<label for="radio_1_1"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_1" name="aq19_2" value="1">
+<label for="radio_1_1"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_2" name="aq19_2" value="2">
+<label for="radio_1_2"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_3" name="aq19_2" value="3">
+<label for="radio_1_3"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_4" name="aq19_2" value="4">
+<label for="radio_1_4"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_5" name="aq19_2" value="5">
+<label for="radio_1_5"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_6" name="aq19_2" value="6">
+<label for="radio_1_6"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_7" name="aq19_2" value="7">
+<label for="radio_1_7"></label>
+</div>
+</div>
+    <div class="scale_2">
+        <div class="between1and2">
+        <span><br>↑<br>보고서 내 문장들의 <br>행 간격을 변경한다</span>
+        </div>
+        <div class="between4and5">
+        <span><br>↑<br>고등학생 밴드가 공연할 <br>대중음악을 편곡한다</span>
+        </div>
+        <div>
+        <span><br>↑<br>새로운 소프트 웨어를 개발한다</span>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+{#    aq22_2#}
+    <div class="q_list ">
+<div class="checking_wrap">
+
+    <strong><h2 class="mt-5 text-center">6. 당신의 【기계장비 유지 보수】활동의 수준은 어느 정도라고 생각하십니까?</h2></strong>
+    <strong><div class="mt-3 text-center">기계장비 유지 보수 : 전자가 아닌 기계적 원리에 의해 작동되는 장비, 부품, 장치, 기
+계를 정비, 수리, 조절, 시험하기</div></strong>
+
+<div class="check_box">
+<div class="scale">
+<span class="detail_scale_never">전혀모름</span>
+    <span class="detail_scale">1</span>
+    <span class="detail_scale">2</span>
+    <span class="detail_scale">3</span>
+    <span class="detail_scale">4</span>
+    <span class="detail_scale">5</span>
+    <span class="detail_scale">6</span>
+    <span class="detail_scale">7</span>
+
+</div>
+<div class="input_wrap">
+    <div class="input_box">
+<input type="radio" id="radio_1_1" name="aq22_2" value="0">
+<label for="radio_1_1"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_1" name="aq22_2" value="1">
+<label for="radio_1_1"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_2" name="aq22_2" value="2">
+<label for="radio_1_2"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_3" name="aq22_2" value="3">
+<label for="radio_1_3"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_4" name="aq22_2" value="4">
+<label for="radio_1_4"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_5" name="aq22_2" value="5">
+<label for="radio_1_5"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_6" name="aq22_2" value="6">
+<label for="radio_1_6"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_7" name="aq22_2" value="7">
+<label for="radio_1_7"></label>
+</div>
+</div>
+    <div class="scale_2">
+        <div class="between1and2">
+        <span><br>↑<br>보고서 내 문장들의 <br>행 간격을 변경한다</span>
+        </div>
+        <div class="between4and5">
+        <span><br>↑<br>고등학생 밴드가 공연할 <br>대중음악을 편곡한다</span>
+        </div>
+        <div>
+        <span><br>↑<br>새로운 소프트 웨어를 개발한다</span>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+{#    aq23_2 #}
+    <div class="q_list ">
+<div class="checking_wrap">
+
+    <strong><h2 class="mt-5 text-center">7. 당신의 【전자장비 유지 보수】활동의 수준은 어느 정도라고 생각하십니까?</h2></strong>
+    <strong><div class="mt-3 text-center">전자장비 유지 보수 : 기계가 아닌 전자적 원리에 의해 작동되는 장비, 부품, 장치, 기
+계를 정비, 수리, 조절, 시험하기</div></strong>
+
+<div class="check_box">
+<div class="scale">
+<span class="detail_scale_never">전혀모름</span>
+    <span class="detail_scale">1</span>
+    <span class="detail_scale">2</span>
+    <span class="detail_scale">3</span>
+    <span class="detail_scale">4</span>
+    <span class="detail_scale">5</span>
+    <span class="detail_scale">6</span>
+    <span class="detail_scale">7</span>
+
+</div>
+<div class="input_wrap">
+    <div class="input_box">
+<input type="radio" id="radio_1_1" name="aq23_2" value="0">
+<label for="radio_1_1"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_1" name="aq23_2" value="1">
+<label for="radio_1_1"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_2" name="aq23_2" value="2">
+<label for="radio_1_2"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_3" name="aq23_2" value="3">
+<label for="radio_1_3"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_4" name="aq23_2" value="4">
+<label for="radio_1_4"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_5" name="aq23_2" value="5">
+<label for="radio_1_5"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_6" name="aq23_2" value="6">
+<label for="radio_1_6"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_7" name="aq23_2" value="7">
+<label for="radio_1_7"></label>
+</div>
+</div>
+    <div class="scale_2">
+        <div class="between1and2">
+        <span><br>↑<br>보고서 내 문장들의 <br>행 간격을 변경한다</span>
+        </div>
+        <div class="between4and5">
+        <span><br>↑<br>고등학생 밴드가 공연할 <br>대중음악을 편곡한다</span>
+        </div>
+        <div>
+        <span><br>↑<br>새로운 소프트 웨어를 개발한다</span>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+{#    aq32_2 #}
+    <div class="q_list ">
+<div class="checking_wrap">
+
+    <strong><h2 class="mt-5 text-center">8. 당신의 【업무상 사람들을 직접 응대】활동의 수준은 어느 정도라고 생각하십니까?</h2></strong>
+    <strong><div class="mt-3 text-center">업무상 사람들을 직접 응대 : 식당, 상점에서 일반 손님을 접대하거나, 거래처 고객 또는 손님을 접대하기</div></strong>
+
+<div class="check_box">
+<div class="scale">
+<span class="detail_scale_never">전혀모름</span>
+    <span class="detail_scale">1</span>
+    <span class="detail_scale">2</span>
+    <span class="detail_scale">3</span>
+    <span class="detail_scale">4</span>
+    <span class="detail_scale">5</span>
+    <span class="detail_scale">6</span>
+    <span class="detail_scale">7</span>
+
+</div>
+<div class="input_wrap">
+    <div class="input_box">
+<input type="radio" id="radio_1_1" name="aq32_2" value="0">
+<label for="radio_1_1"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_1" name="aq32_2" value="1">
+<label for="radio_1_1"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_2" name="aq32_2" value="2">
+<label for="radio_1_2"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_3" name="aq32_2" value="3">
+<label for="radio_1_3"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_4" name="aq32_2" value="4">
+<label for="radio_1_4"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_5" name="aq32_2" value="5">
+<label for="radio_1_5"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_6" name="aq32_2" value="6">
+<label for="radio_1_6"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_7" name="aq32_2" value="7">
+<label for="radio_1_7"></label>
+</div>
+</div>
+    <div class="scale_2">
+        <div class="between1and2">
+        <span><br>↑<br>보고서 내 문장들의 <br>행 간격을 변경한다</span>
+        </div>
+        <div class="between4and5">
+        <span><br>↑<br>고등학생 밴드가 공연할 <br>대중음악을 편곡한다</span>
+        </div>
+        <div>
+        <span><br>↑<br>새로운 소프트 웨어를 개발한다</span>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+    {#    aq35_2 #}
+    <div class="q_list ">
+<div class="checking_wrap">
+
+    <strong><h2 class="mt-5 text-center">9. 당신의 【사람들을 훈련, 교육】활동의 수준은 어느 정도라고 생각하십니까?</h2></strong>
+    <strong><div class="mt-3 text-center">사람들을 훈련, 교육 : 교육 요구 사항을 파악하고, 공식적인 교육 또는 훈련 프로그램을
+만들며, 교육이나 강의를 제공하기</div></strong>
+
+<div class="check_box">
+<div class="scale">
+<span class="detail_scale_never">전혀모름</span>
+    <span class="detail_scale">1</span>
+    <span class="detail_scale">2</span>
+    <span class="detail_scale">3</span>
+    <span class="detail_scale">4</span>
+    <span class="detail_scale">5</span>
+    <span class="detail_scale">6</span>
+    <span class="detail_scale">7</span>
+
+</div>
+<div class="input_wrap">
+    <div class="input_box">
+<input type="radio" id="radio_1_1" name="aq35_2" value="0">
+<label for="radio_1_1"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_1" name="aq35_2" value="1">
+<label for="radio_1_1"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_2" name="aq35_2" value="2">
+<label for="radio_1_2"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_3" name="aq35_2" value="3">
+<label for="radio_1_3"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_4" name="aq35_2" value="4">
+<label for="radio_1_4"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_5" name="aq35_2" value="5">
+<label for="radio_1_5"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_6" name="aq35_2" value="6">
+<label for="radio_1_6"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_7" name="aq35_2" value="7">
+<label for="radio_1_7"></label>
+</div>
+</div>
+    <div class="scale_2">
+        <div class="between1and2">
+        <span><br>↑<br>보고서 내 문장들의 <br>행 간격을 변경한다</span>
+        </div>
+        <div class="between4and5">
+        <span><br>↑<br>고등학생 밴드가 공연할 <br>대중음악을 편곡한다</span>
+        </div>
+        <div>
+        <span><br>↑<br>새로운 소프트 웨어를 개발한다</span>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+    {#    aq39_2 #}
+    <div class="q_list ">
+<div class="checking_wrap">
+
+    <strong><h2 class="mt-5 text-center">10. 당신의 【행정, 관리 업무】활동의 수준은 어느 정도라고 생각하십니까?</h2></strong>
+    <strong><div class="mt-3 text-center">행정, 관리 업무 : 서류 작업, 정보 파일 보관과 같은 일상적인 행정, 관리 업무 하기</div></strong>
+
+<div class="check_box">
+<div class="scale">
+<span class="detail_scale_never">전혀모름</span>
+    <span class="detail_scale">1</span>
+    <span class="detail_scale">2</span>
+    <span class="detail_scale">3</span>
+    <span class="detail_scale">4</span>
+    <span class="detail_scale">5</span>
+    <span class="detail_scale">6</span>
+    <span class="detail_scale">7</span>
+
+</div>
+<div class="input_wrap">
+    <div class="input_box">
+<input type="radio" id="radio_1_1" name="aq39_2" value="0">
+<label for="radio_1_1"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_1" name="aq39_2" value="1">
+<label for="radio_1_1"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_2" name="aq39_2" value="2">
+<label for="radio_1_2"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_3" name="aq39_2" value="3">
+<label for="radio_1_3"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_4" name="aq39_2" value="4">
+<label for="radio_1_4"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_5" name="aq39_2" value="5">
+<label for="radio_1_5"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_6" name="aq39_2" value="6">
+<label for="radio_1_6"></label>
+</div>
+<div class="input_box">
+<input type="radio" id="radio_1_7" name="aq39_2" value="7">
+<label for="radio_1_7"></label>
+</div>
+</div>
+    <div class="scale_2">
+        <div class="between1and2">
+        <span><br>↑<br>보고서 내 문장들의 <br>행 간격을 변경한다</span>
+        </div>
+        <div class="between4and5">
+        <span><br>↑<br>고등학생 밴드가 공연할 <br>대중음악을 편곡한다</span>
+        </div>
+        <div>
+        <span><br>↑<br>새로운 소프트 웨어를 개발한다</span>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<button class="btn-default">제출</button>
 
 
 

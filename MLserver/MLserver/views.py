@@ -22,7 +22,7 @@ def index(request) :
             context['userinfo'] = user_info
     except :
         pass
-    return render(request, 'index.html', context)
+    return render(request, 'discover/index.html', context)
 
 def ajax_method(request):
     receive_message = request.GET.get('year_str')

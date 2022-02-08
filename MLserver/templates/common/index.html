@@ -19,10 +19,10 @@
     />
     <title>추천 당신의 직업은?</title>
     <!-- Favicon -->
-    <link rel="icon" href="{% static 'img/common/favicon.png' %}" type="image/png" />
+    <link rel="icon" href="{% static 'assets/img/common/favicon.png' %}" type="image/png" />
     <link
       rel="apple-touch-icon-precomposed"
-      href="{% static 'img/common/favicon.png' %}"
+      href="{% static 'assets/img/common/favicon.png' %}"
       type="image/png"
     />
     <!-- Fonts -->
@@ -33,25 +33,25 @@
     <!-- Icons -->
     <link
       rel="stylesheet"
-      href="{% static 'vendor/@fontawesome/fontawesome-free/css/all.min.css' %}"
+      href="{% static 'assets/vendor/@fontawesome/fontawesome-free/css/all.min.css' %}"
       type="text/css"
     />
     <link
       rel="stylesheet"
-      href="{% static 'vendor/nucleo/css/nucleo.css' %}"
+      href="{% static 'assets/vendor/nucleo/css/nucleo.css' %}"
       type="text/css"
     />
     <!-- Argon CSS -->
     <link
       rel="stylesheet"
-      href="{% static 'css/argon.css' %}"
+      href="{% static 'assets/css/argon.css' %}"
       type="text/css"
     />
 
-    <link rel="stylesheet" href="{% static 'css/common/default.css' %}" type="text/css" />
-    <link rel="stylesheet" href="{% static 'css/common/main.css' %}" type="text/css" />
-    <link rel="stylesheet" href="{% static 'css/common/qna.css' %}" type="text/css" />
-    <link rel="stylesheet" href="{% static 'css/common/result.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'assets/css/common/default.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'assets/css/common/main.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'assets/css/common/qna.css' %}" type="text/css" />
+    <link rel="stylesheet" href="{% static 'assets/css/common/result.css' %}" type="text/css" />
     <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     <script>
       Kakao.init("2218ae28133d099cab7f118729fe61c5");
@@ -72,20 +72,20 @@
     </script>
   </head>
   <body>
-    <div id="ad">
-      <ins
-        class="kakao_ad_area"
-        style="display: none"
-        data-ad-unit="DAN-eIpKMXDt5yLePByn"
-        data-ad-width="320"
-        data-ad-height="50"
-      ></ins>
-      <script
-        async
-        type="text/javascript"
-        src="//t1.daumcdn.net/kas/static/ba.min.js"
-      ></script>
-    </div>
+{#    <div id="ad">#}
+{#      <ins#}
+{#        class="kakao_ad_area"#}
+{#        style="display: none"#}
+{#        data-ad-unit="DAN-eIpKMXDt5yLePByn"#}
+{#        data-ad-width="320"#}
+{#        data-ad-height="50"#}
+{#      ></ins>#}
+{#      <script#}
+{#        async#}
+{#        type="text/javascript"#}
+{#        src="//t1.daumcdn.net/kas/static/ba.min.js"#}
+{#      ></script>#}
+{#    </div>#}
     <div class="container">
       <section id="main" class="mx-auto py-5 px-3">
         <h1 class="mt-5 text-center">당신에게 어울리는 직업은?</h1>
@@ -141,7 +141,7 @@
             onclick="js:setShare()"
           >
             <img
-              src={% static 'img/common/kakaotalk.png' %}
+              src={% static 'assets/img/common/kakaotalk.png' %}
               class="kakao_share"
               alt="kakaotalk_share_image"
             /><span>카카오톡</span>
@@ -153,8 +153,8 @@
       </section>
     </div>
     <!-- JS -->
-    <script src="{% static 'js/components/common/data.js' %}" charset="utf-8"></script>
-    <script src="{% static 'js/components/common/function.js' %}" charset="utf-8"></script>
-    <script src="{% static 'js/components/common/share.js' %}" charset="utf-8"></script>
+    <script src="{% static 'assets/js/components/common/data.js' %}" charset="utf-8"></script>
+    <script src="{% static 'assets/js/components/common/function.js' %}" charset="utf-8"></script>
+    <script src="{% static 'assets/js/components/common/share.js' %}" charset="utf-8"></script>
   </body>
 </html>

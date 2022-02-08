@@ -22,10 +22,9 @@ import MLserver.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', MLserver.views.index, name='index'),
-    # path('ajax_method/', MLserver.views.ajax_method, name='ajax_method'),
-    # path('talk/', include('talk.urls'), name='talk'),
-    path('discover/', include('discover.urls')),
+    path('', include('common.urls'), name='/'),
+    path('index/', include('discover.urls'), name='index'),
+    path('jobdetail/',include('jobdetail.urls'), name='jobdetail'),
     path('users/', include('users.urls'), name='users'),
-    path('jobrec/', include('jobrec.urls'), name='jobrec')
+    path('jobrec/', include('jobrec.urls'), name='jobrec'),
 ]
