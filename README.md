@@ -6,7 +6,7 @@ https://github.com/PancakeCookie/DACON-Job-Recommendation-Competition
 
 ## 💻 기술 스택
 - Front-end : Bootstrap  
-- Back-end : Django  
+- Back-end : django  
 - DB : MySQL  
 - 배포 : AWS EC2, S3, RDS  
 
